@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         yourButton.onClick.AddListener(next);
+        for (int i = 1; i < planetScenes.Length; i++) {
+            planetScenes[i].SetActive(false);
+        }
     }
 
     // Update is called once per frame
