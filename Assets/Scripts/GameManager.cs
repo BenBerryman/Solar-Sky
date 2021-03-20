@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     //button2
     // Start is called before the first frame update
     public Button yourButton;
-    private bool solar = true;
+    
     public GameObject[] planetScenes;
     void Start()
     {
@@ -22,19 +22,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void next()
     {
-        if (solar)
+        Debug.Log("called");
+        for (int i = 0; i < planetScenes.Length; i++)
         {
-            Debug.Log(planetScenes[0]);
-            Debug.Log(planetScenes[1]);
-            planetScenes[0].SetActive(false);
-            planetScenes[1].SetActive(true);
-            solar = false;
-        }
-        else
-        {
-            planetScenes[1].SetActive(false);
-            planetScenes[0].SetActive(true);
-            solar = true;
+            Debug.Log(planetScenes[i].activeInHierarchy);
+            if (planetScenes[i].activeInHierarchy) 
+            {
+                planetScenes[i].SetActive(false);
+                planetScenes[(i+1)%planetScenes.Length].SetActive(true);
+                break;
+            }
         }
     }
 }
