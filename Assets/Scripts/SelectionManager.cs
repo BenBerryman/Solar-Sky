@@ -36,11 +36,11 @@ public class SelectionManager : MonoBehaviour
     private void Start()
     {
         Debug.Log("started");
-        Name = GameObject.Find("Name").GetComponent<Text>();
-        Mass = GameObject.Find("Mass").GetComponent<Text>();
-        Radius = GameObject.Find("Radius").GetComponent<Text>();
-        planetName = "soleil";
-        StartCoroutine(getPlanetInformation(planetName));
+        Name = GameObject.Find("planetName").GetComponent<Text>();
+        Mass = GameObject.Find("planetMass").GetComponent<Text>();
+        Radius = GameObject.Find("planetRadius").GetComponent<Text>();
+        // planetName = "soleil";
+        // StartCoroutine(getPlanetInformation(planetName));
     }
 
     private void Update()
@@ -112,6 +112,25 @@ public class SelectionManager : MonoBehaviour
         Mass.text = "Planet Mass: " + planetMass + " 10^" + planetMassExponent + " Kilograms";
         Radius.text = "Planet Radius: " + planetRadius + " Kilometres";
     }
+
+    public void requestPlanetInformation(int planetNumber)
+    {
+        if(planetNumber == 0)
+        {
+            Name.text = "Planet Name";
+            Mass.text = "Planet Mass";
+            Radius.text = "Planet Radius";
+        }
+        else
+        {
+            int trueNumber = planetNumber - 1;
+            planetName = planets[trueNumber];
+            StartCoroutine(getPlanetInformation(planetName));
+        }
+        
+    }
+
+    
 
     //// , IPointerDownHandler
     //void Start()

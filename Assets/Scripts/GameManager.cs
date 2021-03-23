@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     public Button nextButton;
     public Button prevButton;
+    private int planetNumber = 0;
+    public SelectionManager selectionManager;
 
     public GameObject[] planetScenes;
     void Start()
     {
+        
         nextButton.onClick.AddListener(next);
         prevButton.onClick.AddListener(previous);
 
@@ -35,6 +38,13 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+
+        planetNumber++;
+        if(planetNumber == 10)
+        {
+            planetNumber = 0;
+        }
+        selectionManager.requestPlanetInformation(planetNumber);
     }
 
     void previous() 
@@ -57,6 +67,12 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+        planetNumber--;
+        if(planetNumber == -1)
+        {
+            planetNumber = 9;
+        }
+        selectionManager.requestPlanetInformation(planetNumber);
     }
 
 }
