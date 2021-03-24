@@ -14,6 +14,7 @@ public class APIManager : MonoBehaviour
     public Text Name;
     public Text Mass;
     public Text Radius;
+    public Text DaysInYear;
 
     private string sunID = "soleil";
     private string mercuryID = "mercure";
@@ -131,11 +132,13 @@ public class APIManager : MonoBehaviour
         string planetMass = planetInfo["mass"]["massValue"];
         string planetRadius = planetInfo["meanRadius"];
         string planetMassExponent = planetInfo["mass"]["massExponent"];
-
+        string planetOrbit = planetInfo["sideralOrbit"];
 
         Name.text = "Planet Name: " + planetName;
         Mass.text = "Planet Mass: " + planetMass + " 10^" + planetMassExponent + " Kilograms";
         Radius.text = "Planet Radius: " + planetRadius + " Kilometres";
+        DaysInYear.text = "Earth Days in a Year: " + planetOrbit + " Days";
+
     }
 
     public void requestPlanetInformation(int planetNumber)
