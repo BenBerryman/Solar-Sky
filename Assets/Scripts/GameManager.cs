@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public Button nextButton;
     public Button prevButton;
     private int planetNumber = 0;
-    public SelectionManager selectionManager;
+    public APIManager apimanager;
 
     public GameObject[] planetScenes;
     void Start()
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
             planetNumber = 0;
         }
         planetScenes[planetNumber].SetActive(true);
-        selectionManager.requestPlanetInformation(planetNumber);
+        apimanager.requestPlanetInformation(planetNumber);
     }
 
     void previous() 
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
             planetNumber = 9;
         }
         planetScenes[planetNumber].SetActive(true);
-        selectionManager.requestPlanetInformation(planetNumber);
+        apimanager.requestPlanetInformation(planetNumber);
     }
 
 }
