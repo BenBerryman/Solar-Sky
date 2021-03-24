@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     //button2
     // Start is called before the first frame update
     public Button nextButton;
-    public Button prevButton;
+    // public Button prevButton;
     private int planetNumber = 0;
     public SelectionManager selectionManager;
 
@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     {
         
         nextButton.onClick.AddListener(next);
-        prevButton.onClick.AddListener(previous);
+        // prevButton.onClick.AddListener(previous);
 
         for (int i = 1; i < planetScenes.Length; i++) {
             planetScenes[i].SetActive(false);
