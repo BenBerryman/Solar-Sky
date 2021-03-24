@@ -41,6 +41,7 @@ public class APIManager : MonoBehaviour
         Radius = GameObject.Find("planetRadius").GetComponent<Text>();
         // planetName = "soleil";
         // StartCoroutine(getPlanetInformation(planetName));
+        // StartCoroutine(GetPlanetFacts("Sun"));
     }
 
     private void Update()
@@ -77,6 +78,30 @@ public class APIManager : MonoBehaviour
                             planetName = "jupiter";
                         }
                         StartCoroutine(getPlanetInformation(planetName));
+
+                        string factname = "soleil";
+
+                        if(planetName == "soleil"){
+                            factname = "Sun";
+                        }else if(planetName == "mercure"){
+                            factname = "Mercury";
+                        }else if(planetName == "venus"){
+                            factname = "Venus";
+                        }else if(planetName == "terre"){
+                            factname = "Earth";
+                        }else if(planetName == "mars"){
+                            factname = "Mars";
+                        }else if(planetName == "jupiter"){
+                            factname = "Jupiter";
+                        }else if(planetName == "saturne"){
+                            factname = "Saturn";
+                        }else if(planetName == "neptune"){
+                            factname = "Neptune";
+                        }
+
+                        StartCoroutine(GetPlanetFacts(factname));
+
+
                     }
 
                     _selection = selection;
@@ -131,6 +156,36 @@ public class APIManager : MonoBehaviour
     }
 
 
+
+     IEnumerator GetPlanetFacts(string pname){
+        UnityWebRequest getjsondata = UnityWebRequest.Get("https://tarunapp.github.io/api/planets.json");
+        yield return getjsondata.SendWebRequest();
+
+        if(getjsondata.isNetworkError){
+            Debug.Log("Error " + getjsondata.error);
+        }
+        else{
+            // Debug.Log("200 " + getjsondata.downloadHandler.text);
+            // string[] arr = new string[] {};
+            var jsondata = JSON.Parse(getjsondata.downloadHandler.text);
+            // Debug.Log(test["Mercury"].Value);
+
+            int planetlen = jsondata[pname].Count;
+            int randfact = randnum(planetlen);
+
+            string planetdata = jsondata[pname][randfact].Value;
+            Debug.Log("Planet Fact: " + planetdata);
+
+            // Set the text feilds to the planet data when we get it.
+            
+        }
+    }
+
+     int randnum(int mainlen){
+        Random.seed = System.DateTime.Now.Millisecond;
+        int x = Random.Range(0,mainlen);
+        return x;
+    }
 
 
     //// , IPointerDownHandler
