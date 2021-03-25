@@ -42,6 +42,7 @@ public class APIManager : MonoBehaviour
         Mass = GameObject.Find("planetMass").GetComponent<Text>();
         Radius = GameObject.Find("planetRadius").GetComponent<Text>();
         DaysInYear = GameObject.Find("planetDaysInYear").GetComponent<Text>();
+        HoursInDay = GameObject.Find("planetHoursInDay").GetComponent<Text>();
         // planetName = "soleil";
         // StartCoroutine(getPlanetInformation(planetName));
         // StartCoroutine(GetPlanetFacts("Sun"));
@@ -134,15 +135,20 @@ public class APIManager : MonoBehaviour
         string planetMass = planetInfo["mass"]["massValue"];
         string planetRadius = planetInfo["meanRadius"];
         string planetMassExponent = planetInfo["mass"]["massExponent"];
-        string planetOrbit = planetInfo["sideralOrbit"];
+        float planetOrbit = planetInfo["sideralOrbit"];
+        float planetRotation = planetInfo["sideralRotation"];
 
         Name.text = "Name                    " + planetName;
         Mass.text = "Mass                    " + cleanDecimal(planetMass) + " x 10^" + planetMassExponent + " kg";
         Radius.text = "Radius                 " + cleanDecimal(planetRadius) + " km";
-        DaysInYear.text = "Earth Days in Year         " + planetOrbit + " Days";
+        DaysInYear.text = "Earth Days in Year           " + cleanHoursAndDays(planetOrbit) + " Days";
+        HoursInDay.text = "Hours in a day           " + cleanHoursAndDays(planetRotation) + " Hours";
 
     }
 
+    public double cleanHoursAndDays(float planetRotation) {
+        return System.Math.Round(System.Math.Abs(planetRotation));
+    }
     public string cleanDecimal(string deci) 
     {
         return float.Parse(deci).ToString("0");
@@ -156,6 +162,8 @@ public class APIManager : MonoBehaviour
             Mass.text = "Mass";
             Radius.text = "Radius";
             DaysInYear.text = "Earth Days in Year";
+            HoursInDay.text = "Hours in a Day";
+            
         }
         else
         {
