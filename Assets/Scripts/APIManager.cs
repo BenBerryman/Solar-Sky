@@ -40,6 +40,7 @@ public class APIManager : MonoBehaviour
         Name = GameObject.Find("planetName").GetComponent<Text>();
         Mass = GameObject.Find("planetMass").GetComponent<Text>();
         Radius = GameObject.Find("planetRadius").GetComponent<Text>();
+        DaysInYear = GameObject.Find("planetDaysInYear").GetComponent<Text>();
         // planetName = "soleil";
         // StartCoroutine(getPlanetInformation(planetName));
         // StartCoroutine(GetPlanetFacts("Sun"));
@@ -134,10 +135,10 @@ public class APIManager : MonoBehaviour
         string planetMassExponent = planetInfo["mass"]["massExponent"];
         string planetOrbit = planetInfo["sideralOrbit"];
 
-        Name.text = "Name                             " + planetName;
-        Mass.text = "Mass                              " + cleanDecimal(planetMass) + " x 10^" + planetMassExponent + " kg";
-        Radius.text = "Radius                           " + cleanDecimal(planetRadius) + " km";
-        DaysInYear.text = "Earth Days in a Year            " + planetOrbit + " Days";
+        Name.text = "Name                    " + planetName;
+        Mass.text = "Mass                    " + cleanDecimal(planetMass) + " x 10^" + planetMassExponent + " kg";
+        Radius.text = "Radius                 " + cleanDecimal(planetRadius) + " km";
+        DaysInYear.text = "Earth Days in Year         " + planetOrbit + " Days";
 
     }
 
@@ -150,9 +151,10 @@ public class APIManager : MonoBehaviour
     {
         if (planetNumber == 0)
         {
-            Name.text = "Planet Name";
-            Mass.text = "Planet Mass";
-            Radius.text = "Planet Radius";
+            Name.text = "Name";
+            Mass.text = "Mass";
+            Radius.text = "Radius";
+            DaysInYear.text = "Earth Days in Year";
         }
         else
         {
