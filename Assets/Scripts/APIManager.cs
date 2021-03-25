@@ -16,6 +16,7 @@ public class APIManager : MonoBehaviour
     public Text Radius;
     public Text DaysInYear;
     public Text HoursInDay;
+    public Text Fact;
 
     private string sunID = "soleil";
     private string mercuryID = "mercure";
@@ -47,7 +48,7 @@ public class APIManager : MonoBehaviour
         // StartCoroutine(getPlanetInformation(planetName));
         // StartCoroutine(GetPlanetFacts("Sun"));
     }
-
+    private bool test = false;
     private void Update()
     {
         //if(_selection != null)
@@ -82,28 +83,8 @@ public class APIManager : MonoBehaviour
                             planetName = "jupiter";
                         }
                         StartCoroutine(getPlanetInformation(planetName));
-
-                        string factname = "soleil";
-
-                        if(planetName == "soleil"){
-                            factname = "Sun";
-                        }else if(planetName == "mercure"){
-                            factname = "Mercury";
-                        }else if(planetName == "venus"){
-                            factname = "Venus";
-                        }else if(planetName == "terre"){
-                            factname = "Earth";
-                        }else if(planetName == "mars"){
-                            factname = "Mars";
-                        }else if(planetName == "jupiter"){
-                            factname = "Jupiter";
-                        }else if(planetName == "saturne"){
-                            factname = "Saturn";
-                        }else if(planetName == "neptune"){
-                            factname = "Neptune";
-                        }
-
-                        StartCoroutine(GetPlanetFacts(factname));
+                        //StartCoroutine(GetPlanetFacts(ConvertBackToEnglish(planetName)));
+                        
 
 
                     }
@@ -117,6 +98,7 @@ public class APIManager : MonoBehaviour
 
     IEnumerator getPlanetInformation(string targetID)
     {
+        
         string planetURL = URL + targetID;
 
         UnityWebRequest planetRequest = UnityWebRequest.Get(planetURL);
@@ -144,6 +126,75 @@ public class APIManager : MonoBehaviour
         DaysInYear.text = "Earth Days in Year           " + cleanHoursAndDays(planetOrbit) + " Days";
         HoursInDay.text = "Hours in a day           " + cleanHoursAndDays(planetRotation) + " Hours";
 
+
+        //==================================================
+        string pname = ConvertBackToEnglish(targetID);
+        Debug.Log(pname + "-----------------");
+        UnityWebRequest getjsondata = UnityWebRequest.Get("https://tarunapp.github.io/api/planets.json");
+        yield return getjsondata.SendWebRequest();
+
+        if (getjsondata.isNetworkError)
+        {
+            Debug.Log("Error " + getjsondata.error);
+        }
+        else
+        {
+            // Debug.Log("200 " + getjsondata.downloadHandler.text);
+            // string[] arr = new string[] {};
+            var jsondata = JSON.Parse(getjsondata.downloadHandler.text);
+            // Debug.Log(test["Mercury"].Value);
+
+            int planetlen = jsondata[pname].Count;
+            int randfact = randnum(planetlen);
+
+            string planetdata = jsondata[pname][randfact].Value;
+            Fact.text = planetdata;
+            Debug.Log("Planet Fact: " + planetdata);
+
+            // Set the text feilds to the planet data when we get it.
+
+        }
+    }
+
+    public string ConvertBackToEnglish(string planetName) {
+        string factname = "";
+        if (planetName == "soleil")
+        {
+            factname = "Sun";
+        }
+        else if (planetName == "mercure")
+        {
+            factname = "Mercury";
+        }
+        else if (planetName == "venus")
+        {
+            factname = "Venus";
+        }
+        else if (planetName == "terre")
+        {
+            factname = "Earth";
+        }
+        else if (planetName == "mars")
+        {
+            factname = "Mars";
+        }
+        else if (planetName == "jupiter")
+        {
+            factname = "Jupiter";
+        }
+        else if (planetName == "saturne")
+        {
+            factname = "Saturn";
+        }
+        else if (planetName == "uranus")
+        {
+            factname = "Uranus";
+        }
+        else if (planetName == "neptune")
+        {
+            factname = "Neptune";
+        }
+        return factname;
     }
 
     public double cleanHoursAndDays(float planetRotation) {
@@ -163,7 +214,7 @@ public class APIManager : MonoBehaviour
             Radius.text = "Radius";
             DaysInYear.text = "Earth Days in Year";
             HoursInDay.text = "Hours in a Day";
-            
+            Fact.text = "Fun Fact";
         }
         else
         {
@@ -177,6 +228,7 @@ public class APIManager : MonoBehaviour
 
 
      IEnumerator GetPlanetFacts(string pname){
+        Debug.Log(pname + "-----------------");
         UnityWebRequest getjsondata = UnityWebRequest.Get("https://tarunapp.github.io/api/planets.json");
         yield return getjsondata.SendWebRequest();
 
