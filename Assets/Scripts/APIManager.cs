@@ -15,6 +15,7 @@ public class APIManager : MonoBehaviour
     public Text Mass;
     public Text Radius;
     public Text DaysInYear;
+    public Text HoursInDay;
 
     private string sunID = "soleil";
     private string mercuryID = "mercure";
