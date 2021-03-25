@@ -210,7 +210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.1, y: 32.1}
+  m_AnchoredPosition: {x: 12.1, y: 32.1}
   m_SizeDelta: {x: 310.76746, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3031762270349270182
@@ -253,7 +253,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Planet Name
+  m_Text: Name
 --- !u!1 &3031762270769265243
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.5, y: 20.7}
+  m_AnchoredPosition: {x: 12.8, y: 20.7}
   m_SizeDelta: {x: 311.78375, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3031762270769265246
@@ -331,7 +331,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Planet Mass
+  m_Text: Mass
 --- !u!1 &3031762270813162517
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.3, y: 9}
+  m_AnchoredPosition: {x: 12.8, y: 9}
   m_SizeDelta: {x: 310.78375, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3031762270813162504
@@ -409,7 +409,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Planet Radius
+  m_Text: Radius
 --- !u!1 &5280617041410963389
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 3.5, y: -2}
+  m_AnchoredPosition: {x: 4.3, y: -2}
   m_SizeDelta: {x: 310.7838, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1476554062830299037
@@ -565,7 +565,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Planet Days In Year
+  m_Text: Earth Days In Year
 --- !u!1 &5741543490264860118
 GameObject:
   m_ObjectHideFlags: 0

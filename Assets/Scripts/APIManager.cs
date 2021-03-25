@@ -134,11 +134,16 @@ public class APIManager : MonoBehaviour
         string planetMassExponent = planetInfo["mass"]["massExponent"];
         string planetOrbit = planetInfo["sideralOrbit"];
 
-        Name.text = "Planet Name: " + planetName;
-        Mass.text = "Planet Mass: " + planetMass + " 10^" + planetMassExponent + " Kilograms";
-        Radius.text = "Planet Radius: " + planetRadius + " Kilometres";
-        DaysInYear.text = "Earth Days in a Year: " + planetOrbit + " Days";
+        Name.text = "Name                             " + planetName;
+        Mass.text = "Mass                              " + cleanDecimal(planetMass) + " x 10^" + planetMassExponent + " kg";
+        Radius.text = "Radius                           " + cleanDecimal(planetRadius) + " km";
+        DaysInYear.text = "Earth Days in a Year            " + planetOrbit + " Days";
 
+    }
+
+    public string cleanDecimal(string deci) 
+    {
+        return float.Parse(deci).ToString("0");
     }
 
     public void requestPlanetInformation(int planetNumber)
