@@ -17,6 +17,7 @@ public class APIManager : MonoBehaviour
     public Text DaysInYear;
     public Text HoursInDay;
     public Text Fact;
+    public Text Composition;
 
     private string sunID = "soleil";
     private string mercuryID = "mercure";
@@ -44,6 +45,7 @@ public class APIManager : MonoBehaviour
         Radius = GameObject.Find("planetRadius").GetComponent<Text>();
         DaysInYear = GameObject.Find("planetDaysInYear").GetComponent<Text>();
         HoursInDay = GameObject.Find("planetHoursInDay").GetComponent<Text>();
+        Composition = GameObject.Find("planetComposition").GetComponent<Text>();
         // planetName = "soleil";
         // StartCoroutine(getPlanetInformation(planetName));
         // StartCoroutine(GetPlanetFacts("Sun"));
@@ -127,8 +129,34 @@ public class APIManager : MonoBehaviour
         HoursInDay.text = "Hours in a day           " + cleanHoursAndDays(planetRotation) + " Hours";
 
 
-        //==================================================
         string pname = ConvertBackToEnglish(targetID);
+        //==============================================================================
+        UnityWebRequest getlanddata = UnityWebRequest.Get("https://tarunapp.github.io/api/planetstype.json");
+        yield return getlanddata.SendWebRequest();
+
+        if (getlanddata.isNetworkError)
+        {
+            Debug.Log("Error " + getlanddata.error);
+        }
+        else
+        {
+            // Debug.Log("200 " + getjsondata.downloadHandler.text);
+            // string[] arr = new string[] {};
+            var jsondata = JSON.Parse(getlanddata.downloadHandler.text);
+            // Debug.Log(test["Mercury"].Value);
+
+            string planetLandType = jsondata[pname];
+
+
+
+            Composition.text = "Body Composition                " +planetLandType;
+            Debug.Log("Planet Land Type: " + planetLandType);
+
+            // Set the text feilds to the planet data when we get it.
+
+        }
+        //==============================================================================
+        
         Debug.Log(pname + "-----------------");
         UnityWebRequest getjsondata = UnityWebRequest.Get("https://tarunapp.github.io/api/planets.json");
         yield return getjsondata.SendWebRequest();
@@ -215,6 +243,7 @@ public class APIManager : MonoBehaviour
             DaysInYear.text = "Earth Days in Year";
             HoursInDay.text = "Hours in a Day";
             Fact.text = "Fun Fact";
+            Composition.text = "Body Composition";
         }
         else
         {
