@@ -1898,6 +1898,48 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3031762270349270177, guid: 671a3fc5960bb44c4aa4bb202f217075,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2effb301c4fd4304ebb54efbad21d14f,
+        type: 3}
+    - target: {fileID: 3031762270769265241, guid: 671a3fc5960bb44c4aa4bb202f217075,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2effb301c4fd4304ebb54efbad21d14f,
+        type: 3}
+    - target: {fileID: 3031762270813162507, guid: 671a3fc5960bb44c4aa4bb202f217075,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2effb301c4fd4304ebb54efbad21d14f,
+        type: 3}
+    - target: {fileID: 3221190684271934526, guid: 671a3fc5960bb44c4aa4bb202f217075,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2effb301c4fd4304ebb54efbad21d14f,
+        type: 3}
+    - target: {fileID: 3936352602899903493, guid: 671a3fc5960bb44c4aa4bb202f217075,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2effb301c4fd4304ebb54efbad21d14f,
+        type: 3}
+    - target: {fileID: 5166948909196332441, guid: 671a3fc5960bb44c4aa4bb202f217075,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2effb301c4fd4304ebb54efbad21d14f,
+        type: 3}
+    - target: {fileID: 6638808220482504266, guid: 671a3fc5960bb44c4aa4bb202f217075,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2effb301c4fd4304ebb54efbad21d14f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 671a3fc5960bb44c4aa4bb202f217075, type: 3}
 --- !u!114 &3031762269139855803 stripped
